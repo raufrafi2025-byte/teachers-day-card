@@ -1,2 +1,187 @@
 # teachers-day-card
-NICE TEACHER
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Teacher's Day Card</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #f6d365, #fda085);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Floating particles */
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); opacity: 1; }
+      50% { transform: translateY(-200px) translateX(50px); opacity: 0.5; }
+      100% { transform: translateY(-400px) translateX(-50px); opacity: 0; }
+    }
+
+    /* Card */
+    .card {
+      width: 320px;
+      height: 250px;
+      perspective: 1000px;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      transition: transform 1s;
+      transform-style: preserve-3d;
+    }
+
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .card-front {
+      background: linear-gradient(135deg, #6dd5fa, #2980b9);
+      color: #fff;
+    }
+
+    .card-front h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .card-front p {
+      font-size: 16px;
+    }
+
+    .card-back {
+      background: #fff;
+      transform: rotateY(180deg);
+    }
+
+    /* Typing animation */
+    .typing {
+      border-right: 2px solid #2980b9;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 3s steps(50, end) forwards, blink 0.8s infinite step-end alternate;
+      font-size: 16px;
+      color: #2980b9;
+      margin-bottom: 10px;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    /* Bounce button */
+    .btn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #2980b9;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Footer text animation */
+    .footer-text {
+      font-size: 12px;
+      color: #555;
+      margin-top: 10px;
+      opacity: 0;
+      animation: fadeInFooter 2s forwards 3s;
+    }
+
+    @keyframes fadeInFooter {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hard Working text */
+    .hardworking {
+      font-size: 18px;
+      color: #e74c3c;
+      font-weight: bold;
+      margin-top: 10px;
+      opacity: 0;
+      animation: slidePulse 2s forwards 2s;
+    }
+
+    @keyframes slidePulse {
+      0% { opacity: 0; transform: translateY(20px); }
+      50% { opacity: 1; transform: translateY(0) scale(1.1); text-shadow: 0 0 10px #e74c3c; }
+      100% { opacity: 1; transform: translateY(0) scale(1); text-shadow: 0 0 5px #e74c3c; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Floating particles -->
+  <div class="particle" style="top: 80%; left: 10%; animation-delay: 0s;"></div>
+  <div class="particle" style="top: 90%; left: 50%; animation-delay: 2s;"></div>
+  <div class="particle" style="top: 85%; left: 80%; animation-delay: 4s;"></div>
+  <div class="particle" style="top: 95%; left: 30%; animation-delay: 1s;"></div>
+
+  <!-- Card -->
+  <div class="card">
+    <div class="card-inner">
+      <div class="card-front">
+        <h1>🎓 Teacher's Day</h1>
+        <p>Click or Hover to Open</p>
+      </div>
+      <div class="card-back">
+        <h2 class="typing">Teacher's Thank you for inspiring us every day.</h2>
+        <div class="hardworking">💪 Hard Working</div>
+        <button class="btn">💖 Thank You</button>
+        <div class="footer-text">Developer: Rauf Rafi Khan</div>
+        <div class="footer-text">Sir: [Sir.HADI]</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
